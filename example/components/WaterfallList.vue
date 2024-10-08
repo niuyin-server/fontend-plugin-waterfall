@@ -1,11 +1,5 @@
-<!--
- * @Date: 2023-03-01 15:43:25
- * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-09-21 09:23:42
- * @FilePath: /vue3-waterfall/example/components/WaterfallList.vue
--->
 <template>
-  <div v-loading="loading" style="min-height: 100%; width:100%">
+  <div v-loading="loading" style="min-height: 100%; width:100%" class="bg-gray-900">
     <!--    <button @click="handleRender">-->
     <!--      强制重绘-->
     <!--    </button>-->
@@ -61,16 +55,18 @@
       </template>
     </Waterfall>
 
-    <div v-show="!loading" class=" "
-         style="position: fixed;right: 1rem;bottom: 1rem;"
-    >
-      <button
-          class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300"
-          @click="handleLoadMore"
-      >
-        加载更多
-      </button>
-    </div>
+<!--    <div v-show="!loading" class=" "-->
+<!--         style="position: fixed;right: 1rem;bottom: 1rem;"-->
+<!--    >-->
+<!--      <button-->
+<!--          class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300"-->
+<!--          @click="handleLoadMore"-->
+<!--      >-->
+<!--        加载更多-->
+<!--      </button>-->
+<!--    </div>-->
+
+    <Loading v-if="true" :is-full-screen="false"/>
   </div>
 </template>
 
@@ -82,6 +78,7 @@ import {LazyImg, Waterfall} from 'vue-waterfall-plugin-next'
 import 'vue-waterfall-plugin-next/dist/style.css'
 import type {ViewCard} from '../../lib/types/waterfall'
 import {getList, getVideoList} from '../api'
+import Loading from './Loading.vue'
 
 const props = defineProps({
   list: {

@@ -1,9 +1,9 @@
 <template>
-  <WaterfallLayout/>
+  <Layout/>
 </template>
 
 <script setup lang="ts">
-import WaterfallLayout from './components/WaterfallLayout.vue'
+import Layout from './components/Layout.vue'
 </script>
 
 <style>

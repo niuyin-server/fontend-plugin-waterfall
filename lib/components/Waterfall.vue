@@ -1,34 +1,26 @@
-<!--
- * @Description:
- * @Version: 2.0
- * @Author: Yaowen Liu
- * @Date: 2021-10-14 10:20:21
- * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-08-23 13:19:44
--->
 <template>
   <div ref="waterfallWrapper" class="waterfall-list" :style="{ height: `${wrapperHeight}px` }">
     <div
-      v-for="(item, index) in list"
-      :key="getKey(item, index)"
-      class="waterfall-item"
+        v-for="(item, index) in list"
+        :key="getKey(item, index)"
+        class="waterfall-item"
     >
       <div class="waterfall-card">
-        <slot name="item" :item="item" :index="index" :url="getRenderURL(item)" />
+        <slot name="item" :item="item" :index="index" :url="getRenderURL(item)"/>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue'
-import { defineComponent, provide, ref, watch } from 'vue'
-import { useDebounceFn } from '@vueuse/core'
-import { useCalculateCols, useLayout } from '../use'
+import type {PropType} from 'vue'
+import {defineComponent, provide, ref, watch} from 'vue'
+import {useDebounceFn} from '@vueuse/core'
+import {useCalculateCols, useLayout} from '../use'
 import Lazy from '../utils/Lazy'
-import type { LazyType } from '../types/lazy'
-import { getValue } from '../utils/util'
-import type { ViewCard } from '../types/waterfall'
+import type {LazyType} from '../types/lazy'
+import {getValue} from '../utils/util'
+import type {ViewCard} from '../types/waterfall'
 
 export default defineComponent({
   props: {
@@ -103,7 +95,8 @@ export default defineComponent({
     },
     loadProps: {
       type: Object,
-      default: () => { },
+      default: () => {
+      },
     },
     crossOrigin: {
       type: Boolean,
@@ -133,12 +126,15 @@ export default defineComponent({
     } = useCalculateCols(props)
 
     // 容器高度，块定位
-    const { wrapperHeight, layoutHandle } = useLayout(
-      props,
-      colWidth,
-      cols,
-      offsetX,
-      waterfallWrapper,
+    const {
+      wrapperHeight,
+      layoutHandle
+    } = useLayout(
+        props,
+        colWidth,
+        cols,
+        offsetX,
+        waterfallWrapper,
     )
 
     // 1s内最多执行一次排版，减少性能开销
@@ -150,11 +146,11 @@ export default defineComponent({
 
     // 列表发生变化直接触发排版
     watch(
-      () => [wrapperWidth, colWidth, props.list],
-      () => {
-        if (wrapperWidth.value > 0) renderer()
-      },
-      { deep: true },
+        () => [wrapperWidth, colWidth, props.list],
+        () => {
+          if (wrapperWidth.value > 0) renderer()
+        },
+        {deep: true},
     )
 
     // 尺寸宽度变化防抖触发
@@ -198,6 +194,7 @@ export default defineComponent({
   overflow: hidden;
   background-color: v-bind(backgroundColor);
 }
+
 .waterfall-item {
   position: absolute;
   left: 0;
@@ -216,6 +213,7 @@ export default defineComponent({
     opacity: 1;
   }
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -224,6 +222,7 @@ export default defineComponent({
     opacity: 1;
   }
 }
+
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;

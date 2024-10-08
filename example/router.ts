@@ -6,17 +6,9 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            name: 'PageA',
-            component: () => import('./components/PageA.vue'),
+            name: 'index',
+            component: () => import('./components/Index.vue'),
         },
-        // {
-        //   path: '/page-a',
-        // },
-        // {
-        //   path: '/page-b',
-        //   name: 'PageB',
-        //   component: () => import('./components/PageB.vue'),
-        // },
     ],
 })
 

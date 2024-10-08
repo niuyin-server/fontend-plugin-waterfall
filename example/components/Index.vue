@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen flex overflow-hidden">
-    <div class="flex-auto overflow-y-auto scoller">
+    <div class="flex-auto overflow-y-auto scroller">
       <WaterfallList :options="options" @cardClick="dialogVisible = true"/>
     </div>
   </div>
@@ -16,26 +16,35 @@ const options = reactive({
   // 唯一key值
   rowKey: 'id',
   // 卡片之间的间隙
-  gutter: 16,
+  gutter: 10,
   // 是否有周围的gutter
   hasAroundGutter: true,
   // 卡片在PC上的宽度
   width: 460,
   // 自定义行显示个数，主要用于对移动端的适配
   breakpoints: {
+    3840: {
+      // 4K下
+      rowPerView: 8,
+    },
     2560: {
+      // 2K下
       rowPerView: 7,
     },
     1920: {
+      // 2K下
       rowPerView: 6,
     },
     1600: {
+      // 2K下
       rowPerView: 5,
     },
-    1200: {
+    1366: {
+      // 2K下
       rowPerView: 4,
     },
-    1080: {
+    820: {
+      // 当屏幕宽度小于等于800
       rowPerView: 3,
     },
     640: {
@@ -61,13 +70,14 @@ const options = reactive({
   // 是否懒加载
   lazyload: false,
   align: 'center',
+  crossOrigin: true,
 })
 
 const dialogVisible = ref(false)
 </script>
 
-<style>
-.scoller::-webkit-scrollbar {
+<style scoped>
+.scroller::-webkit-scrollbar {
   z-index: 10;
   cursor: pointer;
   background-color: #2C2E3A;
@@ -76,21 +86,21 @@ const dialogVisible = ref(false)
   height: 1px;
 }
 
-.scoller::-webkit-scrollbar-button {
+.scroller::-webkit-scrollbar-button {
   display: none;
 }
 
-.scoller::-webkit-scrollbar-thumb {
+.scroller::-webkit-scrollbar-thumb {
   background: rgba(239, 33, 112, 0.5);
   cursor: pointer;
   border-radius: 5px;
 }
 
-.scoller::-webkit-scrollbar-corner {
+.scroller::-webkit-scrollbar-corner {
   display: none;
 }
 
-.scoller::-webkit-resizer {
+.scroller::-webkit-resizer {
   display: none;
 }
 
