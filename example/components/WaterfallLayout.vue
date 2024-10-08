@@ -1,20 +1,9 @@
 <template>
-<!--  <div>-->
-<!--    <nav class="page-nav">-->
-<!--      <router-link to="/page-a">-->
-<!--        基础API展示-->
-<!--      </router-link>-->
-<!--      <router-link to="/page-b">-->
-<!--        数据分页展示-->
-<!--      </router-link>-->
-<!--    </nav>-->
-
     <router-view v-slot="{Component}">
       <keep-alive>
         <component :is="Component" />
       </keep-alive>
     </router-view>
-<!--  </div>-->
 </template>
 
 <script setup lang="ts">
