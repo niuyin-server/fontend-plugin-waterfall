@@ -57,12 +57,12 @@ export default {
 
   .blue {
     background: blue;
-    animation: anim-blue 0.4s ease-in-out 0s infinite alternate;
+    animation: anim-blue 0.5s ease-in-out 0s infinite alternate;
   }
 
   .red {
     background: red;
-    animation: anim-red 0.4s ease-in-out 0s infinite alternate;
+    animation: anim-red 0.5s ease-in-out 0s infinite alternate;
   }
 
   @keyframes anim-blue {
